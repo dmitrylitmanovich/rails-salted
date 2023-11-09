@@ -1,17 +1,29 @@
+require "rest-client"
+
 class CreateCustomer
   include Interactor
 
   def call
-    order = Order.create(order_params)
+    response = RestClient::Request.execute(
+      method:  :post,
+      url:     "#{ENV['SALTEDGE_API_URL']}/customers",
+      payload: {
+        data: {
+          identifier: context.user_email
+        }
+      },
+      log:     Logger.new(STDOUT),
+      headers: {
+        "Accept"       => "application/json",
+        "Content-type" => "application/json",
+        'App-id' => ENV['AI_API_APP_ID'],
+        'Secret' => ENV['AI_API_SECRET'],
+      }
+    )
 
-    if order.persisted?
-      context.order = order
-    else
-      context.fail!
-    end
+    context.response = response
   end
 
   def rollback
-    context.order.destroy
   end
 end
