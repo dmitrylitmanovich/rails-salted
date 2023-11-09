@@ -78,3 +78,7 @@ gem "redis", "~> 5.0"
 gem "sentry-ruby", "~> 5.12"
 
 gem "sentry-rails", "~> 5.12"
+
+gem "bootstrap", "~> 5.3"
+
+gem "jquery-rails", "~> 4.6"
