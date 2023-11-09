@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     binding.pry
-    customer = CreateCustomer.call(user_email: user_email)
+    customer_id = CreateCustomer.call(user_email: user_email).customer_id
   end
 
   # DELETE /resource/sign_out

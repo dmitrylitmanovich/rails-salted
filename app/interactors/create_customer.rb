@@ -21,7 +21,7 @@ class CreateCustomer
       }
     )
 
-    context.response = response
+    context.customer_id = JSON.parse(response.body)['data']['id']
   end
 
   def rollback
