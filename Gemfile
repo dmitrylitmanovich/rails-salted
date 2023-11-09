@@ -84,3 +84,5 @@ gem "bootstrap", "~> 5.3"
 gem "jquery-rails", "~> 4.6"
 
 gem "interactor", "~> 3.1"
+
+gem "faraday", "~> 2.7"
