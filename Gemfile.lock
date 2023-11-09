@@ -124,6 +124,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    interactor (3.1.2)
     io-console (0.6.0)
     irb (1.8.3)
       rdoc
@@ -278,6 +279,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dockerfile-rails (~> 1.5)
   importmap-rails
+  interactor (~> 3.1)
   jbuilder
   jquery-rails (~> 4.6)
   pg (~> 1.5)
