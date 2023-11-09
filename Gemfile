@@ -72,3 +72,9 @@ gem "dockerfile-rails", "~> 1.5"
 gem "pg", "~> 1.5"
 
 gem "devise", "~> 4.9"
+
+gem "redis", "~> 5.0"
+
+gem "sentry-ruby", "~> 5.12"
+
+gem "sentry-rails", "~> 5.12"
