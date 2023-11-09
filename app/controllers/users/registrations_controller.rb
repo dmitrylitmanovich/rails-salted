@@ -13,8 +13,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource/sign_in
   def create
     super
-    binding.pry
-    customer_id = CreateCustomer.call(user_email: user_email).customer_id
+
+    return unless current_user
+
+    customer = CreateCustomer.call(user_email: user_params[:user_email]).customer
+    current_user.create_customer(customer_id: customer.id, identifier: customer.identifier)
   end
 
   # DELETE /resource/sign_out

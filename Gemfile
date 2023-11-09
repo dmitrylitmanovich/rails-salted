@@ -88,3 +88,5 @@ gem "faraday", "~> 2.7"
 gem "faraday_csrf", "~> 0.1.0"
 
 gem "rest-client", "~> 2.1"
+
+gem "cssbundling-rails", "~> 1.3"

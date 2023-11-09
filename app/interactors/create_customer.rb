@@ -12,16 +12,18 @@ class CreateCustomer
           identifier: context.user_email
         }
       },
-      log:     Logger.new(STDOUT),
+      log: Logger.new(STDOUT),
       headers: {
         "Accept"       => "application/json",
         "Content-type" => "application/json",
-        'App-id' => ENV['AI_API_APP_ID'],
-        'Secret' => ENV['AI_API_SECRET'],
+        'App-id'       => ENV['AI_API_APP_ID'],
+        'Secret'       => ENV['AI_API_SECRET'],
       }
     )
 
-    context.customer_id = JSON.parse(response.body)['data']['id']
+    response_data = JSON.parse(response.body)['data']
+    context.id = response_data['id']
+    context.identifier = response_data['identifier']
   end
 
   def rollback
