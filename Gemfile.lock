@@ -108,6 +108,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.0)
     dockerfile-rails (1.5.12)
       rails (>= 3.0.0)
     domain_name (0.5.20190701)
@@ -119,14 +120,6 @@ GEM
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
-    faraday (2.7.11)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
-    faraday_csrf (0.1.0)
-      faraday
-      nokogiri
     globalid (1.2.1)
       activesupport (>= 6.1)
     http-accept (1.7.0)
@@ -244,6 +237,23 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.6)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.15.0)
@@ -304,8 +314,6 @@ DEPENDENCIES
   devise (~> 4.9)
   dockerfile-rails (~> 1.5)
   dotenv-rails
-  faraday (~> 2.7)
-  faraday_csrf (~> 0.1.0)
   importmap-rails
   interactor (~> 3.1)
   jbuilder
@@ -315,6 +323,7 @@ DEPENDENCIES
   rails (~> 7.1.1)
   redis (~> 5.0)
   rest-client (~> 2.1)
+  rspec-rails (~> 6.0.0)
   selenium-webdriver
   sentry-rails (~> 5.12)
   sentry-ruby (~> 5.12)

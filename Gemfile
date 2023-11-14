@@ -47,8 +47,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
-  gem 'pry', '~> 0.14.2'
   gem 'dotenv-rails', groups: [:development, :test]
+  gem 'pry', '~> 0.14.2'
+  gem 'rspec-rails', '~> 6.0.0'
 end
 
 group :development do
@@ -82,10 +83,6 @@ gem "sentry-ruby", "~> 5.12"
 gem "sentry-rails", "~> 5.12"
 
 gem "interactor", "~> 3.1"
-
-gem "faraday", "~> 2.7"
-
-gem "faraday_csrf", "~> 0.1.0"
 
 gem "rest-client", "~> 2.1"
 
