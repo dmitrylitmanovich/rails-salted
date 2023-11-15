@@ -1,6 +1,14 @@
 class ConnectionsController < ApplicationController
   def index
-    # @connection = Connection.find(paramss[:customer_id])
+    # @connection = Connection.find()
+    @connections = RetrieveConnections.call(
+      customer_id: Customer.find(params[:customer_id]).customer_id
+    ).data
+    
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show

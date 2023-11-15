@@ -87,3 +87,5 @@ gem "interactor", "~> 3.1"
 gem "rest-client", "~> 2.1"
 
 gem "cssbundling-rails", "~> 1.3"
+
+gem "jsbundling-rails", "~> 1.2"

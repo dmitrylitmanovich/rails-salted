@@ -1,8 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-sm-6">
     <div class="card">
-
-    <% if !@connection %>
+    <% if !connection %>
 
       <div class="card-header">
         There is no connection yet!
@@ -17,16 +16,26 @@
 
     <% else %>
 
-      <div class="card-header">
-        <%= "##{current_user.customer.customer_id}" %>
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <%= connection['provider_name'] %>
+        <a class="btn btn-primary">
+          See transactions
+        </a>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <%= @connection.to_json %>
-        </li>
-        <li class="list-group-item">
-          <a href=<%= customer_connections_path(current_user.customer) %> class="btn btn-warning">Refresh</a>
-        </li>
+          <li class="list-group-item">
+            <dl>
+              <% connection.each do |k, v| %>
+                <dt><%= k %></dt>
+                <dd><%= v %></dd>
+              <% end %>
+            </dl>
+            <%= connection %>
+          </li>
+          <li class="list-group-item">
+            <a href="#" class="btn btn-warning">Refresh</a>
+            <a href="#" class="btn btn-primary">Edit Connection</a>
+          </li>
       </ul>
 
     <% end %>
