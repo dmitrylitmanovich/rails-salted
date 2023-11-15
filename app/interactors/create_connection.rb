@@ -13,14 +13,14 @@ class CreateConnection
          country_code: 'XF',
          provider_code: 'fakebank_simple_xf',
          consent: {
-           from_date:"2020-06-07",
+           from_date: Date.today,
            scopes: [
              'account_details',
              'transactions_details'
             ]
           },
          attempt: {
-           from_date: '2020-07-07',
+           from_date: Date.today,
            fetch_scopes: [
              'accounts',
              'transactions'
@@ -29,10 +29,6 @@ class CreateConnection
              test: true
             }
           },
-         credentials: {
-           login: context.username,
-           password: context.password
-          }
         }
       },
       log: Logger.new(STDOUT),

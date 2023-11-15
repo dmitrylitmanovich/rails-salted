@@ -16,8 +16,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     return unless current_user
 
-    customer = CreateCustomer.call(user_email: user_params[:user_email]).customer
-    current_user.create_customer(customer_id: customer.id, identifier: customer.identifier)
+    customer = CreateCustomer.call(user_email: current_user.email)
+    current_user.create_customer(customer_id: customer.id, identifier: customer.identifier) if customer.success?
   end
 
   # DELETE /resource/sign_out
@@ -35,6 +35,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:password, :email)
+    params.require(:user).permit(:password, :password_confirmation, :email)
   end
 end
