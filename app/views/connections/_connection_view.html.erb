@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+    <div class="card">
+
+    <% if !@connection %>
+
+      <div class="card-header">
+        There is no connection yet!
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <%= form_for(:connection, url: customer_connections_path, html: { method: :post }) do |f| %>
+            <%= f.submit 'Create a new one', class: 'btn btn-primary' %>
+          <% end %>
+        </li>
+      </ul>
+
+    <% else %>
+
+      <div class="card-header">
+        <%= "##{current_user.customer.customer_id}" %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <%= @connection.to_json %>
+        </li>
+        <li class="list-group-item">
+          <a href=<%= customer_connections_path(current_user.customer) %> class="btn btn-warning">Refresh</a>
+        </li>
+      </ul>
+
+    <% end %>
+
+    </div>
+  </div>
+</div>

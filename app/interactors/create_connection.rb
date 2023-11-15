@@ -8,27 +8,31 @@ class CreateConnection
       method:  :post,
       url:     "#{ENV['SALTEDGE_API_URL']}/connections",
       payload: {
-       data: {
-         customer_id: context.customer_id,
-         country_code: 'XF',
-         provider_code: 'fakebank_simple_xf',
-         consent: {
-           from_date: Date.today,
-           scopes: [
-             'account_details',
-             'transactions_details'
+        data: {
+          customer_id: context.customer_id,
+          country_code: 'XF',
+          provider_code: 'fakebank_simple_xf',
+          consent: {
+            from_date: Date.today,
+            scopes: [
+              'account_details',
+              'transactions_details'
             ]
           },
-         attempt: {
-           from_date: Date.today,
-           fetch_scopes: [
-             'accounts',
-             'transactions'
+          attempt: {
+            from_date: Date.today,
+            fetch_scopes: [
+              'accounts',
+              'transactions'
             ],
-           'custom_fields': {
-             test: true
+            custom_fields: {
+              test: true
             }
           },
+          credentials: {
+            login: context.username,
+            password: context.password
+          }
         }
       },
       log: Logger.new(STDOUT),
@@ -40,9 +44,7 @@ class CreateConnection
       }
     )
 
-    response_data = JSON.parse(response.body)['data']
-    context.id = response_data['id']
-    context.identifier = response_data['identifier']
+    context.data = JSON.parse(response.body)['data']
   end
 
   def rollback

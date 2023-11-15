@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_232117) do
   enable_extension "plpgsql"
 
   create_table "connections", force: :cascade do |t|
+    t.bigint "customer_id"
     t.json "data"
     t.datetime "last_success_at"
     t.datetime "next_refresh_possible_at"
@@ -25,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_232117) do
     t.boolean "store_credentials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_connections_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|

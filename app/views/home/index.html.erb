@@ -6,7 +6,7 @@
     <div class="card-body">
       <h5 class="card-title">#<%= current_user.customer.customer_id %></h5>
       <p class="card-text"><%= current_user.customer.identifier %></p>
-      <a href="#" class="btn btn-primary">See Details</a>
+      <a href=<%= customer_connections_path(current_user.customer) %> class="btn btn-primary">See Details</a>
     </div>
   </div>
 </div>
