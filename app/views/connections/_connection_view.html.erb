@@ -18,9 +18,7 @@
 
       <div class="card-header d-flex align-items-center justify-content-between">
         <%= connection['provider_name'] %>
-        <a class="btn btn-primary">
-          See transactions
-        </a>
+        <%= link_to 'See details', connection_info_path(connection['id']) %>
       </div>
       <ul class="list-group list-group-flush">
           <li class="list-group-item">

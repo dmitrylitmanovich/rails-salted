@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+  <%# connection['provider_name'] %>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        Accounts
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @accounts.each do |account| %>
+          <li class="list-group-item">
+            <dl>
+              <% account.each do |k, v| %>
+                <dt><%= k %></dt>
+                <dd><%= v %></dd>
+              <% end %>
+            </dl>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        Transactions
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @transactions.each do |transaction| %>
+          <li class="list-group-item">
+            <dl>
+              <% transaction.each do |k, v| %>
+                <dt><%= k %></dt>
+                <dd><%= v %></dd>
+              <% end %>
+            </dl>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+

@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :customers do
     resources :connections, shallow: true
   end
+  get 'connection_info/:connection_id', to: 'connection_info#index', as: :connection_info
 end
