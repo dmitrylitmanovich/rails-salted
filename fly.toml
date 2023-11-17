@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for rails-salted on 2023-11-09T04:13:34+04:00
+# fly.toml app configuration file generated for rails-saltedapp on 2023-11-17T04:43:01+04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "rails-salted"
+app = "rails-saltedapp"
 primary_region = "ams"
 console_command = "/rails/bin/rails console"
 

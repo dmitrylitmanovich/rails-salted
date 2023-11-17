@@ -1,21 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-sm-6">
     <div class="card">
-    <% if !connection %>
-
-      <div class="card-header">
-        There is no connection yet!
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <%= form_for(:connection, url: customer_connections_path, html: { method: :post }) do |f| %>
-            <%= f.submit 'Create a new one', class: 'btn btn-primary' %>
-          <% end %>
-        </li>
-      </ul>
-
-    <% else %>
-
       <div class="card-header d-flex align-items-center justify-content-between">
         <%= connection['provider_name'] %>
         <%= link_to 'See details', connection_info_path(connection['id']) %>
@@ -34,9 +19,6 @@
             <a href="#" class="btn btn-primary">Edit Connection</a>
           </li>
       </ul>
-
-    <% end %>
-
     </div>
   </div>
 </div>

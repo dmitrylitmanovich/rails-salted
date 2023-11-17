@@ -2,7 +2,7 @@ class ConnectionsController < ApplicationController
   def index
     customer_id = Customer.find(params[:customer_id]).customer_id
     @connections = RetrieveResource.call(resource: 'connections', required_resource_id: customer_id).data
-    
+
     respond_to do |format|
       format.html
       format.json

@@ -1,6 +1,26 @@
 <div class="row justify-content-center">
   <h3 class="col-sm-6">Connection</h3>
 </div>
-<% @connections.each do |connection| %>
-  <%= render partial: 'connection_view', locals: { connection: connection } %>
+<% if @connections&.empty? %>
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          There is no connection yet!
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <%= form_for(:connection, url: customer_connections_path, html: { method: :post }) do |f| %>
+              <%= f.submit 'Create a new one', class: 'btn btn-primary' %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <% @connections.each do |connection| %>
+    <%= render partial: 'connection_view', locals: { connection: connection } %>
+  <% end %>
 <% end %>
+
