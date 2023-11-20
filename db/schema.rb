@@ -16,7 +16,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_211108) do
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "connection_id"
-    t.json "data"
+    t.integer "account_id"
+    t.string "name"
+    t.string "currency"
+    t.float "balance"
+    t.string "nature"
+    t.json "extra"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["connection_id"], name: "index_accounts_on_connection_id"
@@ -47,8 +52,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_211108) do
   end
 
   create_table "transactions", force: :cascade do |t|
+    t.bigint "account_id"
+    t.integer "transaction_id"
+    t.integer "transaction_status"
+    t.string "currency"
+    t.float "amount"
+    t.string "description"
+    t.string "category"
+    t.string "mode"
+    t.json "extra"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|
