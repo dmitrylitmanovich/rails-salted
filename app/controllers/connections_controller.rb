@@ -26,6 +26,8 @@ class ConnectionsController < ApplicationController
       password: password,
       customer_id: customer_id
     )
+    save_info(@accounts, @transactions)
+
     connection.data
   end
 end

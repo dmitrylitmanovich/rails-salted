@@ -10,7 +10,7 @@ class ConnectionInfoController < ApplicationController
   private def save_info(accounts, transactions)
     connection = current_user.customer.connection
 
-    accounts.each { |a| connection.accounts.create(data: a) }
-    transactions.each { |t| connection.transactions.create(data: t) }
+    accounts.each { |a| connection.accounts.create(extra: a) }
+    transactions.each { |t| connection.transactions.create(extra: t) }
   end
 end
