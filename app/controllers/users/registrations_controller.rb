@@ -16,7 +16,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     return unless current_user
 
-    customer = CreateCustomer.call(user_email: current_user.email)
+    customers = RetrieveCustomersList.call.identifiers
+    customer = CreateCustomer.call(user_email: current_user.email) unless customers.include? current_user.email
     current_user.create_customer(customer_id: customer.id, identifier: customer.identifier) if customer.success?
   end
 

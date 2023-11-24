@@ -14,7 +14,19 @@ class ConnectionsController < ApplicationController
     # @connection = Connection.find(paramss[:customer_id])
   end
 
+  #   @accounts = RetrieveResource.call(resource: 'accounts', required_resource_id: connection_id).data
+  #   @transactions = RetrieveResource.call(resource: 'transactions', required_resource_id: connection_id).data
+  #   save_info(@accounts, @transactions)
+
+  # private def save_info(accounts, transactions)
+  #   connection = current_user.customer.connection
+
+  #   accounts.each { |a| connection.accounts.create(extra: a) }
+  #   transactions.each { |t| connection.transactions.create(extra: t) }
+  # end
+
   def create
+    binding.pry
     if %w[development test].include? Rails.env  # TODO: Change to a user prompt
       username = 'username'
       password = 'secret'
