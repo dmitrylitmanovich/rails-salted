@@ -1,10 +1,10 @@
 <div class="row justify-content-center">
+  <h3 class="col-sm-6">Accounts</h3>
+</div>
+<div class="row justify-content-center">
   <%# connection['provider_name'] %>
   <div class="col-sm-6">
     <div class="card">
-      <div class="card-header">
-        Accounts
-      </div>
       <ul class="list-group list-group-flush">
         <% @accounts.each do |account| %>
           <li class="list-group-item">
@@ -14,38 +14,18 @@
                 <dd><%= v %></dd>
               <% end %>
             </dl>
+            <% if account.transactions.empty? %>
+              <dl>
+                <dt>Transactions</dt>
+                <dd>0</dd>
+              </dl>
+            <% else %>
+              <%= link_to 'Transactions', account_transactions_path(account), class: 'btn btn-primary' %>
+            <% end %>
           </li>
-          <% account.transactions.each do |k, v| %>
-                <dt><%= k %></dt>
-                <dd><%= v %></dd>
-              <% end %>
         <% end %>
       </ul>
     </div>
   </div>
-
-  <%
-=begin%>
- <div class="col-sm-6">
-    <div class="card">
-      <div class="card-header">
-        Transactions
-      </div>
-      <ul class="list-group list-group-flush">
-        <% @transactions.each do |transaction| %>
-          <li class="list-group-item">
-            <dl>
-              <% transaction.each do |k, v| %>
-                <dt><%= k %></dt>
-                <dd><%= v %></dd>
-              <% end %>
-            </dl>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div> 
-<%
-=end%>
 </div>
 

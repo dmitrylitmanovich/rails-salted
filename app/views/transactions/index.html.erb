@@ -1,2 +1,21 @@
-<h1>Transactions#index</h1>
-<p>Find me in app/views/transactions/index.html.erb</p>
+<div class="row justify-content-center">
+  <h3 class="col-sm-6">Transactions</h3>
+</div>
+<div class="row justify-content-center">
+ <div class="col-sm-6">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <% @transactions.each do |transaction| %>
+          <li class="list-group-item">
+            <dl>
+              <% transaction.serializable_hash.each do |k, v| %>
+                <dt><%= k %></dt>
+                <dd><%= v %></dd>
+              <% end %>
+            </dl>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div> 
+</div>

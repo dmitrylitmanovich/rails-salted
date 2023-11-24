@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
   def index
-    connection_id = params[:connection_id]
+    @transactions = Account.find(params[:account_id]).transactions
   end
 end

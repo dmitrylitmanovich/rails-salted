@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :customers do
-    resources :connections, shallow: true
+    resources :connections, shallow: true do
+      resources :accounts do
+        resources :transactions
+      end
+    end
   end
   get 'connection_info/:connection_id', to: 'connection_info#index', as: :connection_info
 end
