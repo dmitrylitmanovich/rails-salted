@@ -17,8 +17,7 @@ class RetrieveCustomersList
     )
 
     response_data = JSON.parse(response.body)['data']
-
-    context.identifiers = response_data.pluck('identifier')
+    context.data = response_data.to_h { |item| [item['identifier'], item['id']] }
   end
 
   def rollback

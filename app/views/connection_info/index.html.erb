@@ -9,18 +9,24 @@
         <% @accounts.each do |account| %>
           <li class="list-group-item">
             <dl>
-              <% account.each do |k, v| %>
+              <% account.serializable_hash.each do |k, v| %>
                 <dt><%= k %></dt>
                 <dd><%= v %></dd>
               <% end %>
             </dl>
           </li>
+          <% account.transactions.each do |k, v| %>
+                <dt><%= k %></dt>
+                <dd><%= v %></dd>
+              <% end %>
         <% end %>
       </ul>
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <%
+=begin%>
+ <div class="col-sm-6">
     <div class="card">
       <div class="card-header">
         Transactions
@@ -38,6 +44,8 @@
         <% end %>
       </ul>
     </div>
-  </div>
+  </div> 
+<%
+=end%>
 </div>
 

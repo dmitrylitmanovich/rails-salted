@@ -17,6 +17,10 @@ class RetrieveResource
       path: 'transactions',
       required_param: 'connection_id'
     },
+    customers: {
+      path: 'customers',
+      required_param: 'customer_id'
+    }
   })
 
   def call

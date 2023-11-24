@@ -15,10 +15,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
 
     return unless current_user
-
-    customers = RetrieveCustomersList.call.identifiers
-    customer = CreateCustomer.call(user_email: current_user.email) unless customers.include? current_user.email
-    current_user.create_customer(customer_id: customer.id, identifier: customer.identifier) if customer.success?
+    binding.pry
+    customer = if matched_customer_id
+                 RetrieveResource.call(resource: 'customers', required_resource_id: matched_customer_id).data.first
+               else
+                 CreateCustomer.call(user_email: current_user.email).data
+               end
+    current_user.create_customer(customer_id: customer['id'], identifier: customer['identifier']) if customer
   end
 
   # DELETE /resource/sign_out
@@ -34,6 +37,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
+
+  def matched_customer_id
+    customers = RetrieveCustomersList.call
+
+    customers.data[current_user.email] || nil
+  end
 
   def user_params
     params.require(:user).permit(:password, :password_confirmation, :email)
