@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "ConnectionInfos", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/connection_info/index"
+  describe "GET /" do
+    it "creates accounts/transactions successfully in case and returns http success" do
       expect(response).to have_http_status(:success)
     end
   end

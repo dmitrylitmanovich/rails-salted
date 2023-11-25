@@ -21,8 +21,8 @@ class DoActionOnConnection
                     },
                     override_credentials: true,
                     credentials: {
-                      login: context.username,
-                      password: context.password
+                      login: 'username',
+                      password: 'secret'
                     }
                   }
                 },
@@ -44,11 +44,10 @@ class DoActionOnConnection
   })
 
   def call
-    action = match_resource()[context.do_action]
-    # do_action: do_action, connection_id: connection_id
+    action = match_action()[context.do_action]
     response = RestClient::Request.execute(
       method:  action.method,
-      url:     "#{ENV['SALTEDGE_API_URL']}/connections/#{context.connection_id}" + action.query,
+      url:     "#{ENV['SALTEDGE_API_URL']}/connections/#{context.connection_id}/#{action.query}",
       payload: action.payload,
       log: Logger.new(STDOUT),
       headers: {
