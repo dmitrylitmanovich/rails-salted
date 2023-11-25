@@ -11,19 +11,8 @@ class ConnectionsController < ApplicationController
   end
 
   def show
-    # @connection = Connection.find(paramss[:customer_id])
+    @connection = Connection.find(params[:customer_id])
   end
-
-  #   @accounts = RetrieveResource.call(resource: 'accounts', required_resource_id: connection_id).data
-  #   @transactions = RetrieveResource.call(resource: 'transactions', required_resource_id: connection_id).data
-  #   save_info(@accounts, @transactions)
-
-  # private def save_info(accounts, transactions)
-  #   connection = current_user.customer.connection
-
-  #   accounts.each { |a| connection.accounts.create(extra: a) }
-  #   transactions.each { |t| connection.transactions.create(extra: t) }
-  # end
 
   def create
     binding.pry
@@ -41,5 +30,28 @@ class ConnectionsController < ApplicationController
     save_info(@accounts, @transactions)
 
     connection.data
+  end
+
+  def edit
+    p params
+    p '========================================================'
+    if %w[development test].include? Rails.env  # TODO: Change to a user prompt
+      username = 'username'
+      password = 'secret'
+    end
+    
+    do_action = params[:do_action]
+    connection_id = params[:id]
+    updated_connection = DoActionOnConnection.call(
+      do_action: do_action,
+      connection_id: connection_id,
+      username: username,
+      password: password
+    )
+    flash[:notice] = updated_connection.success? && 'Success!'
+    redirect_to customer_connections_path(current_user.customer)
+  end
+
+  def destroy
   end
 end

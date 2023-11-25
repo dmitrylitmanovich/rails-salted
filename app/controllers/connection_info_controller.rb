@@ -1,6 +1,6 @@
 class ConnectionInfoController < ApplicationController
-  # def index
-  #   connection_id = params[:connection_id]
+  def index
+    connection_id = params[:connection_id]
 
     if current_user.customer.connection&.accounts&.empty?
       @accounts = RetrieveResource.call(resource: 'accounts', required_resource_id: connection_id).data

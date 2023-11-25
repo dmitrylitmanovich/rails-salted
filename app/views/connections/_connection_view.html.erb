@@ -15,8 +15,11 @@
             </dl>
           </li>
           <li class="list-group-item">
-            <a href="#" class="btn btn-warning">Refresh</a>
-            <a href="#" class="btn btn-primary">Edit Connection</a>
+            <% if connection['next_refresh_possible_at'] >= DateTime.now %>
+              <%= link_to 'Refresh', edit_connection_path(connection['id'], do_action: :refresh) %>
+              <%= link_to 'Reconnect', edit_connection_path(connection['id'], do_action: :reconnect) %>
+            <% end %>
+            <%= link_to 'Remove', edit_connection_path(connection['id'], do_action: :remove), class: 'btn btn-danger' %> 
           </li>
       </ul>
     </div>

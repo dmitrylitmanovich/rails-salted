@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :customers do
     resources :connections, shallow: true do
+      delete 'destroy'
       resources :accounts do
         resources :transactions
       end
