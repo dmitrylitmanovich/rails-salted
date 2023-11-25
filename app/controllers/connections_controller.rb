@@ -1,8 +1,8 @@
 class ConnectionsController < ApplicationController
   def index
-    customer_id = Customer.find(params[:customer_id]).customer_id
-    @connections = RetrieveResource.call(resource: 'connections', required_resource_id: customer_id).data
-    Customer.find(params[:customer_id]).create_connection(data: @connections.last) unless Customer.find(params[:customer_id]).connection
+    customer = Customer.find(params[:customer_id])
+    @connections = customer.connection
+    # customer.create_connection(data: @connections.last) unless customer.connection
 
     respond_to do |format|
       format.html
@@ -15,7 +15,6 @@ class ConnectionsController < ApplicationController
   end
 
   def create
-    binding.pry
     if %w[development test].include? Rails.env  # TODO: Change to a user prompt
       username = 'username'
       password = 'secret'
@@ -27,14 +26,11 @@ class ConnectionsController < ApplicationController
       password: password,
       customer_id: customer_id
     )
-    save_info(@accounts, @transactions)
 
     connection.data
   end
 
   def edit
-    p params
-    p '========================================================'
     if %w[development test].include? Rails.env  # TODO: Change to a user prompt
       username = 'username'
       password = 'secret'
@@ -49,6 +45,7 @@ class ConnectionsController < ApplicationController
       password: password
     )
     flash[:notice] = updated_connection.success? && 'Success!'
+
     redirect_to customer_connections_path(current_user.customer)
   end
 

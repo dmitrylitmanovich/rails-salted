@@ -8,7 +8,6 @@ class ConnectionInfoController < ApplicationController
       save_info(@accounts, @transactions)
     else
       @accounts = current_user.customer.connection.accounts
-      # @transactions = current_user.customer.transactions
     end
   end
 

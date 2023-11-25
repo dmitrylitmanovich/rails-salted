@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <h3 class="col-sm-6">Connection</h3>
 </div>
-<% if @connections&.empty? %>
+<% if !@connections %>
   <div class="row justify-content-center">
     <div class="col-sm-6">
       <div class="card">
@@ -19,7 +19,7 @@
     </div>
   </div>
 <% else %>
-  <% @connections.each do |connection| %>
+  <% [@connections].each do |connection| %>
     <%= render partial: 'connection_view', locals: { connection: connection } %>
   <% end %>
 <% end %>
