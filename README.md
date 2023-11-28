@@ -11,7 +11,7 @@ fake_bank_simple_xf)
 - Refresh connections in a background job (untested)
 - Deploy the app to Heroku (or other publicly available platform)
 - *(undone)* Use Salt Edge callbacks to update connections’ status
-9) *(undone)* Cover all the models/controllers with tests for all their methods.
-10) *(undone)* Write feature/integration specs.
-11) *(undone)* Use a separate class that will handle all requests to Gateway API, cover it with
+- Cover all the models(unneeded)/controllers with tests for all their methods. - *base*
+- *(undone)* Write feature/integration specs.
+- *(undone)* Use a separate class that will handle all requests to Gateway API, cover it with
 tests.

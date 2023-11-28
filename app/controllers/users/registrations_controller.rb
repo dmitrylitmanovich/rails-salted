@@ -20,7 +20,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
                  CreateCustomer.call(user_email: current_user.email).data
                end
     current_user.create_customer(customer_id: customer['id'], identifier: customer['identifier']) if customer
-    # TODO: Remove user in case of errors
+    
+    current_user.destroy unless customer.success?
+    # if customer.failed? && customer.errors&.any?
+    #   current_user.destroy
+    #   redirect_to users_sign_in_path
+    # end
   end
 
   private
