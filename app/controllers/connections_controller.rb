@@ -23,6 +23,7 @@ class ConnectionsController < ApplicationController
       customer_id: customer_id
     )
 
+    Customer.find(params['customer_id']).connections.create(connection.data)
     connection.data
   end
 
