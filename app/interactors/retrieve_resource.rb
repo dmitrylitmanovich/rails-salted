@@ -25,17 +25,18 @@ class RetrieveResource
 
   def call
     resource = match_resource()[context.resource]
-    response = RestClient::Request.execute(
-      method:  :get,
+    conn = Faraday.new(
       url:     "#{ENV['SALTEDGE_API_URL']}/#{resource.path}?#{resource.required_param}=#{context.required_resource_id}",
-      log: Logger.new(STDOUT),
       headers: {
-        "Accept"       => "application/json",
-        "Content-type" => "application/json",
+        'Accept'       => 'application/json',
+        'Content-type' => 'application/json',
         'App-id'       => ENV['AI_API_APP_ID'],
         'Secret'       => ENV['AI_API_SECRET'],
       }
     )
+    response = conn.get do |req|
+      req.body = action.payload.to_json
+    end
 
     context.data = JSON.parse(response.body)['data']
   end
