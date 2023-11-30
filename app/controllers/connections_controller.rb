@@ -1,12 +1,12 @@
 class ConnectionsController < ApplicationController
   def index
     customer = Customer.find(params[:customer_id])
-    @connections = customer.connection
+    @connections = customer.connections
     # customer.create_connection(data: @connections.last) unless customer.connection
 
     respond_to do |format|
       format.html
-      format.json
+      format.json { render json: @connections }
     end
   end
 
@@ -49,7 +49,7 @@ class ConnectionsController < ApplicationController
   def credentials
     if %w[development test].include? Rails.env  # TODO: Change to a user prompt
       OpenStruct.new(
-        username: 'username'
+        username: 'username',
         password: 'secret'
       )
     end

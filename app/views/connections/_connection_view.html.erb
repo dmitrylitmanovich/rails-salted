@@ -15,7 +15,7 @@
             </dl>
           </li>
           <li class="list-group-item">
-            <% if connection['data']['next_refresh_possible_at'] >= DateTime.now %>
+            <% if connection['data']&.[]('next_refresh_possible_at')&.>=(DateTime.now) %>
               <%= link_to 'Refresh', edit_connection_path(connection['id'], do_action: :refresh) %>
               <%= link_to 'Reconnect', edit_connection_path(connection['id'], do_action: :reconnect) %>
             <% end %>

@@ -31,6 +31,7 @@ module RailsSalted
         helper_specs: false,
         routing_specs: false
       )
+      g.factory_bot dir: 'spec/factories'
     end
   end
 end

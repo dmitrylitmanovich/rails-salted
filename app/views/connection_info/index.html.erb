@@ -6,7 +6,7 @@
   <div class="col-sm-6">
     <div class="card">
       <ul class="list-group list-group-flush">
-        <% @accounts.each do |account| %>
+        <% @accounts&.each do |account| %>
           <li class="list-group-item">
             <dl>
               <% account.serializable_hash.each do |k, v| %>

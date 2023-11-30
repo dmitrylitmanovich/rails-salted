@@ -19,7 +19,7 @@
     </div>
   </div>
 <% else %>
-  <% [@connections].each do |connection| %>
+  <% @connections.each do |connection| %>
     <%= render partial: 'connection_view', locals: { connection: connection } %>
   <% end %>
 <% end %>
