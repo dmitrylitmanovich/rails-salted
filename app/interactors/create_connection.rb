@@ -44,7 +44,9 @@ class CreateConnection
       }.to_json
     end
 
-    context.data = JSON.parse(response.body)['data']
+    data = JSON.parse(response.body)['data']
+    context.data = data
+    context
   end
 
   def rollback

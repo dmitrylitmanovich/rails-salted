@@ -1,13 +1,11 @@
 require "rails_helper"
 
 RSpec.describe RetrieveCustomersList do
-  let(:interactor) { RetrieveCustomersList }
+  subject(:context) { RetrieveCustomersList.call }
 
   context "it successfully retrieve a Customers list from API" do
-    let(:result) { interactor.call }
-
     it "succeeds" do
-      expect(result.successful?).to be(true)
+      expect(context).to be_a_success
     end
   end
 end

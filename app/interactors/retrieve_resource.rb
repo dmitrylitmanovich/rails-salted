@@ -34,9 +34,7 @@ class RetrieveResource
         'Secret'       => ENV['AI_API_SECRET'],
       }
     )
-    response = conn.get do |req|
-      req.body = action.payload.to_json
-    end
+    response = conn.get
 
     context.data = JSON.parse(response.body)['data']
   end
