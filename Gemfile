@@ -67,7 +67,9 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  #gem 'factory_bot_rails'
+  gem 'factory_bot_rails'
+  gem "webmock"
+  gem "vcr"
   gem "selenium-webdriver"
 end
 
@@ -95,3 +97,7 @@ gem "jsbundling-rails", "~> 1.2"
 gem "sidekiq", "~> 7.2"
 gem "sidekiq-scheduler"
 
+
+gem "typhoeus", "~> 1.4"
+
+gem "faraday", "~> 2.7"

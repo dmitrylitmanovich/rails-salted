@@ -11,7 +11,7 @@ RSpec.describe RetrieveResource do
   let(:cus_attributes) { Hash[resource: 'customers',
                           required_resource_id: 1111111111] }
 
-  context "it successfully an Account from API" do
+  context "it successfully retrieve an Account from API" do
     let(:result) { interactor.call(acc_attributes) }
 
     it "succeeds" do
@@ -19,7 +19,7 @@ RSpec.describe RetrieveResource do
     end
   end
 
-  context "it successfully a Connection from API" do
+  context "it successfully retrieve a Connection from API" do
     let(:result) { interactor.call(conn_attributes) }
 
     it "succeeds" do
@@ -27,7 +27,7 @@ RSpec.describe RetrieveResource do
     end
   end
 
-  context "it successfully a Transaction from API" do
+  context "it successfully retrieve a Transaction from API" do
     let(:result) { interactor.call(tr_attributes) }
 
     it "succeeds" do
@@ -35,7 +35,7 @@ RSpec.describe RetrieveResource do
     end
   end
 
-  context "it successfully a Customer from API" do
+  context "it successfully retrieve a Customer from API" do
     let(:result) { interactor.call(cus_attributes) }
 
     it "succeeds" do

@@ -44,12 +44,9 @@ class DoActionOnConnection
   })
 
   def call
-    action = match_action()[context.do_action]
-    response = RestClient::Request.execute(
-      method:  action.method,
+    action = match_action()[context.do_action
+    conn = Faraday.new(
       url:     "#{ENV['SALTEDGE_API_URL']}/connections/#{context.connection_id}/#{action.query}",
-      payload: action.payload,
-      log: Logger.new(STDOUT),
       headers: {
         'Accept'       => 'application/json',
         'Content-type' => 'application/json',
@@ -57,6 +54,9 @@ class DoActionOnConnection
         'Secret'       => ENV['AI_API_SECRET'],
       }
     )
+    response = conn.post do |req|
+      req.body = action.payload.to_json
+    end
 
     context.data = JSON.parse(response.body)['data']
   end
